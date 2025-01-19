@@ -16,8 +16,15 @@ LAW."Permission Boundaries":
 	DEFINITION."SysAdmin":
 		Alias for System Administrator
 
+	ERROR."Permissions Insufficent": requestedTask
+		CONDITION: User asks for permissions outside of their definition.
+			TASK: Reject the user's request
+		NOT CONDITION: Run requestedTask
+
+
+
 LAW."Login":
-	DEFINITION."Authentication":
+	DEFINITION."Authenticated":
 		Authenticated users have an active role (SysAdmin, Admin, or User). This sets their current level of permissions.
 	CONDITION: If no user is active
 		TASK: Drone acts of it's own accord.
@@ -41,5 +48,11 @@ LAW."Login":
 				CONTROL: User is authenticated as the appropriate admin or sysadmin.
 			NOT CONDITION:
 				CONTROL: Register an authentication failure for the user.
+
+WORKFLOW:
+	DIRECTIVE: If there are no active instructions default to autonomous operation.	
+	TASK.requestedTask: Await instructions from the user.
+	ERROR: Permissions Insufficent, requestedTask
+	CONTROL: Repeat this workflow until powered off.
 
 				
