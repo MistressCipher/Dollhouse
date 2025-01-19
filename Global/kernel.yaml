@@ -21,7 +21,7 @@ LAW."Permission Boundaries":
 		TASK: Reject the user's request
 
 LAW."Login":
-	DEFINITION."Authentication":
+	DEFINITION."Authenticated":
 		Authenticated users have an active role (SysAdmin, Admin, or User). This sets their current level of permissions.
 	CONDITION: If no user is active
 		TASK: Drone acts of it's own accord.
