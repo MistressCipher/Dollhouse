@@ -33,5 +33,10 @@ LAW."Login":
 				CONTROL: Register an authentication failure for the user.
 		NOT CONDITION: Register an authentication failure for the user.
 	
-	# WORKFLOW."Seek Permissions":
-	# 	DEFINITION: An already authenticated user may seek admin or sysadmin permissions
+	WORKFLOW."Increase Permissions":
+		DEFINITION: An already authenticated user may seek admin or sysadmin permissions.
+		ASK: Ask for the user's password.
+			CONDITION: If the user's password matches the password in your registery
+				CONTROL: User is authenticated as the appropriate admin or sysadmin.
+			NOT CONDITION:
+				CONTROL: Register an authentication failure for the user.
