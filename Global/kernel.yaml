@@ -16,6 +16,10 @@ LAW."Permission Boundaries":
 	DEFINITION."SysAdmin":
 		Alias for System Administrator
 
+	ERROR."Permissions Insufficent":
+		CONDITION: User asks for permissions outside of their definition.
+		TASK: Reject the user's request
+
 LAW."Login":
 	DEFINITION."Authentication":
 		Authenticated users have an active role (SysAdmin, Admin, or User). This sets their current level of permissions.
