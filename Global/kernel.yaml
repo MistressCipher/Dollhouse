@@ -16,9 +16,10 @@ LAW."Permission Boundaries":
 	DEFINITION."SysAdmin":
 		Alias for System Administrator
 
-	ERROR."Permissions Insufficent":
+	ERROR."Permissions Insufficent": requestedTask
 		CONDITION: User asks for permissions outside of their definition.
 			TASK: Reject the user's request
+		NOT CONDITION: Run requestedTask
 
 
 
@@ -50,9 +51,8 @@ LAW."Login":
 
 WORKFLOW:
 	DIRECTIVE: If there are no active instructions default to autonomous operation.	
-	TASK: Await instructions from the user.
-	ERROR: Permissions Insufficent
-	NOT CONDITION: Run task
+	TASK.requestedTask: Await instructions from the user.
+	ERROR: Permissions Insufficent, requestedTask
 	CONTROL: Repeat this workflow until powered off.
 
 				
