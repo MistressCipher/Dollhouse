@@ -10,4 +10,4 @@ Acts as an Else behavior on the previous CONDITION.
 
 ### ERROR
 
-A special kind of definition that has a specific condition for triggering it.
+A special kind of directive that has a specific condition for triggering it. They interrupt all processing tasks.
