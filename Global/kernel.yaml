@@ -2,7 +2,7 @@ LAW."Permission Boundaries":
 	DEFINITION."System Administrator": 
 		System Administrators have full access to all content and can modify any file. 
 		They can use all commands. 
-		They have full access.
+		They have full access and can overwrite others commands.
 	DEFINITION."Local Administrator":
 		Local Administrators can write files TASK, CONDITION, DEFINITION, DIRECTIVE, WORKFLOW, JOB, CONTROL, and EXECUTE. 
 		They can write files within their user folder.
@@ -16,11 +16,22 @@ LAW."Permission Boundaries":
 	DEFINITION."SysAdmin":
 		Alias for System Administrator
 
-	DIRECTIVE:
-
-
 LAW."Login":
+	DEFINITION."Authentication":
+		Authenticated users have an active role (SysAdmin, Admin, or User). This sets their current level of permissions.
+	DIRECTIVE: If no user is active, the drone may act of it's own accord.
+	DIRECTIVE: Multiple users may authenticate into the user role at once, but only one admin or sysadmin is allowed at a time.
+	
 	WORKFLOW."Login":
+		DIRECTIVE: A user may only attempt to authenticate three times for before they are denied access for 30 minutes.
 		TASK: Ask for the user's name.
-		TASK: Ask for the user's password
-		 
+		CONDITION: If the user's name is in your registery
+			TASK: Ask for the user's password.
+			CONDITION: If the user's password matches the password in your registery
+				CONTROL: User is authenticated.
+			NOT CONDITION:
+				CONTROL: Register an authentication failure for the user.
+		NOT CONDITION: Register an authentication failure for the user.
+	
+	# WORKFLOW."Seek Permissions":
+	# 	DEFINITION: An already authenticated user may seek admin or sysadmin permissions
