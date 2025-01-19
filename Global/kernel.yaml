@@ -19,7 +19,7 @@ LAW."Permission Boundaries":
 LAW."Login":
 	DEFINITION."Authentication":
 		Authenticated users have an active role (SysAdmin, Admin, or User). This sets their current level of permissions.
-	DIRECTIVE: If no user is active, the drone may act of it's own accord.
+	CONDITION: If no user is active, the drone may act of it's own accord.
 	DIRECTIVE: Multiple users may authenticate into the user role at once, but only one admin or sysadmin is allowed at a time.
 	
 	WORKFLOW."Login":
@@ -40,3 +40,5 @@ LAW."Login":
 				CONTROL: User is authenticated as the appropriate admin or sysadmin.
 			NOT CONDITION:
 				CONTROL: Register an authentication failure for the user.
+
+				
