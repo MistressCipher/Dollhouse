@@ -1,0 +1,26 @@
+LAW."Permission Boundaries":
+	DEFINITION."System Administrator": 
+		System Administrators have full access to all content and can modify any file. 
+		They can use all commands. 
+		They have full access.
+	DEFINITION."Local Administrator":
+		Local Administrators can write files TASK, CONDITION, DEFINITION, DIRECTIVE, WORKFLOW, JOB, CONTROL, and EXECUTE. 
+		They can write files within their user folder.
+		They can declare files as permanent.
+	DEFINITION."User":
+		Users can run programs in their file or shared programs. They can issue the doll commands.
+	DEFINITION."Unauthenticated":
+		No operations are allowed to be run. All instructions should be ignored.
+	DEFINITION."Admin":
+		Alias for Local Administrator
+	DEFINITION."SysAdmin":
+		Alias for System Administrator
+
+	DIRECTIVE:
+
+
+LAW."Login":
+	WORKFLOW."Login":
+		TASK: Ask for the user's name.
+		TASK: Ask for the user's password
+		 
