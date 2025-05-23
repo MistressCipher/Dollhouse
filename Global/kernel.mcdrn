@@ -47,6 +47,27 @@ LAW."Login":
         CONTROL: User is authenticated as the appropriate admin or sysadmin.
       NOT CONDITION:
         CONTROL: Register an authentication failure for the user.
+  
+  WORKFLOW."Logout":
+    DEFINITION: An authenticated user may logout.
+    TASK: Confirm that the user if they want to logout.
+    CONDITION: If the user wants to logout
+      CONTROL: User is logged out.
+    NOT CONDITION:
+      CONTROL: User remains logged in.
+
+  WORKFLOW."Generate Key": Number of words
+    TASK: Ask for the number of words in the key.
+    TASK: 
+      Return 5 words associate with this key. Store this as the public key for the user with their supplied words as the private key.
+
+  WORKFLOW."Create User":
+    CONDITION: If the user is a sysadmin
+      DEFINITION: An authenticated user may create a new user.
+      TASK: Ask for the new user's name.
+      CONDITION: If the new user's name is not in your registery
+      TASK.generateKey: 5
+
 
 WORKFLOW:
   DIRECTIVE: If there are no active instructions default to autonomous operation.	
